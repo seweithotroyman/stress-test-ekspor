@@ -2,7 +2,7 @@
 
 Sebuah aplikasi web ringan berbasis Python Flask untuk melakukan simulasi cepat terhadap dampak tarif ekspor (misalnya tarif baru dari AS) terhadap sektor-sektor ekspor utama Indonesia.
 
-### 📌 Tujuan
+### Tujuan
 Aplikasi ini bertujuan membantu pengambil kebijakan, peneliti, atau pengamat ekonomi untuk:
 - Menghitung potensi penurunan ekspor akibat kenaikan tarif,
 - Memperkirakan nilai ekspor yang hilang,
@@ -11,7 +11,7 @@ Aplikasi ini bertujuan membantu pengambil kebijakan, peneliti, atau pengamat eko
 
 ---
 
-## 🧩 Fitur Utama
+## Fitur Utama
 
 - Upload file data sektor ekspor (CSV/Excel)
 - Input nilai tarif tambahan (%)
@@ -21,7 +21,7 @@ Aplikasi ini bertujuan membantu pengambil kebijakan, peneliti, atau pengamat eko
 
 ---
 
-## ⚙️ Cara Menjalankan Aplikasi
+## Cara Menjalankan Aplikasi
 
 ### 1. Clone repositori ini
 
