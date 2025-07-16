@@ -37,6 +37,8 @@ source venv/bin/activate  # Windows: venv\\Scripts\\activate
 pip install -r requirements.txt
 ```
 
+Buka browser ke: http://127.0.0.1:5000/
+
 ### 3. Jalankan aplikasi
 ```bash
 python app.py
