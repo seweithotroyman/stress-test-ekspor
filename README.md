@@ -1,4 +1,4 @@
-# 🇮🇩 Stress Test Ekspor – Web App
+# Stress Test Ekspor – Web App
 
 Sebuah aplikasi web ringan berbasis Python Flask untuk melakukan simulasi cepat terhadap dampak tarif ekspor (misalnya tarif baru dari AS) terhadap sektor-sektor ekspor utama Indonesia.
 
