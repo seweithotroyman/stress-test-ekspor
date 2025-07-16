@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stress Test Ekspor Indonesia</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h2 class="mb-4 text-center">Stress Test Ekspor Indonesia</h2>
+        <form method="POST" action="/process" enctype="multipart/form-data" class="mb-4">
+            <div class="mb-3">
+                <label for="file" class="form-label">Upload File Ekspor (CSV/Excel)</label>
+                <input type="file" name="file" id="file" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="tarif" class="form-label">Input Tarif Tambahan (%)</label>
+                <input type="number" step="0.1" name="tarif" id="tarif" class="form-control" placeholder="Misal: 32" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Proses Simulasi</button>
+        </form>
+
+        {% if table_html %}
+        <h4 class="mt-4">Hasil Simulasi</h4>
+        <div class="table-responsive">
+            {{ table_html | safe }}
+        </div>
+        <a href="/download" class="btn btn-success mt-3">Download Hasil CSV</a>
+        {% endif %}
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('table').DataTable();
+        });
+    </script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        {% if chart_data %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mt-5">
+            <h5>Visualisasi Penurunan Ekspor (%) per Sektor</h5>
+            <canvas id="chartExportDrop" height="100"></canvas>
+        </div>
+        <div class="col-md-6 mt-4">
+            <h5>Distribusi Estimasi PHK</h5>
+            <canvas id="chartPHK" height="100"></canvas>
+        </div>
+        </div>
+    </div>
+
+    <script>
+        const sektor = {{ chart_data['sektor'] | safe }};
+        const penurunan_ekspor = {{ chart_data['penurunan_ekspor'] | safe }};
+        const nilai_hilang = {{ chart_data['nilai_hilang'] | safe }};
+        const phk = {{ chart_data['phk'] | safe }};
+
+        new Chart(document.getElementById("chartExportDrop"), {
+            type: 'bar',
+            data: {
+                labels: sektor,
+                datasets: [{
+                    label: "Penurunan Ekspor (%)",
+                    data: penurunan_ekspor,
+                    backgroundColor: "rgba(54, 162, 235, 0.7)"
+                }]
+            }
+        });
+
+        new Chart(document.getElementById("chartPHK"), {
+            type: 'pie',
+            data: {
+                labels: sektor,
+                datasets: [{
+                    label: "Estimasi PHK",
+                    data: phk,
+                    backgroundColor: [
+                        "#ff6384", "#36a2eb", "#cc65fe", "#ffce56", "#4bc0c0",
+                        "#9966ff", "#ff9f40", "#66ff99", "#ff6666", "#66b2ff"
+                    ]
+                }]
+            }
+        });
+    </script>
+    {% endif %}
+</body>
+</html>
