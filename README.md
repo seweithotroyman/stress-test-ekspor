@@ -28,13 +28,16 @@ Aplikasi ini bertujuan membantu pengambil kebijakan, peneliti, atau pengamat eko
 ```bash
 git clone https://github.com/namamu/stress-test-ekspor-indonesia.git
 cd stress-test-ekspor-indonesia
+```
 
 ### 2. Buat environment dan install dependencies
 ```bash
 python -m venv venv
 source venv/bin/activate  # Windows: venv\\Scripts\\activate
 pip install -r requirements.txt
+```
 
 ### 3. Jalankan aplikasi
 ```bash
 python app.py
+```
